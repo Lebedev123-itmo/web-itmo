@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<LINK REL="stylesheet" TYPE="text/css" href="style.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+<style>
+.nof{
+background-color: orange;
+border-radius: 15px;
+padding: 10px;
+width: 100px;
+}
+.showh{
+background-color: orange;
+border-radius: 10px;
+padding: 16px;
+width: 140px;
+}
+.shown{
+background-color: orange;
+border-radius: 10px;
+padding: 16px;
+width: 140px;
+}
+.showa{
+background-color: orange;
+border-radius: 10px;
+padding: 16px;
+width: 120px;
+}
+.send{
+background-color: orange;
+border-radius: 10px;
+padding: 16px;
+width: 120px;
+}
+</style>
+<script>
+document.write("Love XSS!");
+</script>
+<br>
+Количество слов:
+<script>
+function WordCount(str){
+return str.split(' ').length;
+}
+let a = WordCount("привет, привет!");
+document.write(a);
+</script>
+<br>
+URL:
+<script>
+document.write(document.URL);
+</script>
+<br>
+Имя файла:
+<script>
+var path = window.location.pathname;
+var page = path.split("/").pop();
+let name = page.split(".");
+document.write(name[0]);
+</script>
+<br>
+Расширение файла:
+<script>
+var ending = page.split(".").pop();
+document.write(ending);
+</script>
+<br><br>
+<a href="https://habr.com/ru/post/66057/" target="blank">
+XSS habr:
+</a>
+<br>
+<img src="https://hsto.org/getpro/habr/post_images/eb2/095/f93/eb2095f93237faf2d431042f395ec416.jpg" width="250" height="200" id="XSS">
+<br><br>
+<a href="https://medium.com/@madrobot/ssrf-server-side-request-forgery-types-and-ways-to-exploit-it-part-1-29d034c27978" target="_blank">
+SSRF
+</a>
+<br>
+<img src="https://miro.medium.com/max/1190/1*lxoV91ij1jd7FTXKiIb5kQ.png" width="400" height="300" id="SSRF" >
+<br> <br>
+количество анкоров:
+<script>
+document.write(document.anchors.length);
+</script>
+<br><br>
+количество ссылок:
+<script>
+document.write(document.links.length);
+</script>
+<br><br>
+количество картинок:
+<script>
+document.write(document.images.length);
+</script>
+<br><br>
+ширина первой картинки:
+<script>
+document.write(document.getElementById("XSS").width)
+</script>
+<br><br>
+ширина самой широкой картинки:
+<script>
+document.write(Math.max(document.getElementById("XSS").width, document.getElementById("SSRF").width));
+</script>
+<br><br>
+сумма широт:
+<script>
+document.write(document.getElementById("XSS").width + document.getElementById("SSRF").width);
+</script>
+<br> <br>
+<form id="a1" name="1">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a1')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a1').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('1')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a2" name="2">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a2')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a2').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('2')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a3" name="3">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a3')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a3').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('3')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a4" name="4">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a4')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a4').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('4')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a5" name="5">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a5')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a5').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('5')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a6" name="6">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a6')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a6').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('6')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a7" name="7">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a7')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a7').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('7')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a8" name="8">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a8')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a8').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('8')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a9" name="9">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a9')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a9').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('9')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form><br><br>
+<form id="a10" name="10">
+Ввод: <input type="text" name="name"><br>
+<input type="button" class="nof" name="noform" onclick="no('a10')" value="Сбросить">
+<input type="button" class="showh" name="showhost" onclick="alert(document.getElementById('a10').id)" value="Принадлежность">
+<input type="button" class="shown" name='showname' onclick="alert('10')" value="Имя формы">
+<input type="button" class="send" name="send" onclick="formSubmit()" value="Отправить">
+<input type="button" class="showa" name="showarea" onclick="alert('1')" value="Количество">
+</form>
+</form>
+</body>
+</html>
